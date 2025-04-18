@@ -1,0 +1,787 @@
+
+<!DOCTYPE html>
+
+<html>
+<body>
+<h1>Hello World</h1>
+<p>I'm hosted with GitHub Pages.</p>
+</body>
+</html>
+
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İstinye Üniversitesi Kan Bağışı Projesi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d10000;
+            --secondary-color: #000000;
+            --accent-color: #ffffff;
+            --text-color: #333333;
+            --light-gray: #f5f5f5;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+        }
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--light-gray));
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .header p {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            max-width: 800px;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            border: 2px solid var(--accent-color);
+            font-weight: bold;
+        }
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto;
+        }
+        .benefits-container, .donors-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .benefit-card, .donor-card {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        .benefit-card:hover, .donor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 50px 0;
+        }
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+        .contact-form {
+            background-color: var(--accent-color);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            font-weight: bold;
+        }
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            background-color: var(--secondary-color);
+        }
+        .footer {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        .footer p {
+            margin-bottom: 10px;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 998;
+        }
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 1000;
+        }
+        .chatbot-toggle {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .chatbot-toggle:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        .chatbot-window {
+            background-color: var(--accent-color);
+            width: 350px;
+            max-height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .chatbot-header {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+        }
+        .chatbot-header h3 {
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        .chatbot-close {
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .chatbot-close:hover {
+            color: var(--secondary-color);
+        }
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: var(--light-gray);
+        }
+        .chatbot-message {
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            max-width: 80%;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .chatbot-message.user {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            margin-left: auto;
+            text-align: right;
+        }
+        .chatbot-message.bot {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+        }
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            background-color: var(--accent-color);
+            border-top: 1px solid #ddd;
+        }
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: border 0.3s ease;
+        }
+        .chatbot-input input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        .chatbot-input button {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .chatbot-input button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        .chatbot-quick-replies {
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            background-color: var(--accent-color);
+            border-top: 1px solid #ddd;
+        }
+        .chatbot-quick-replies button {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .chatbot-quick-replies button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            .header p {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .chatbot-window {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>İSTİNYE ÜNİVERSİTESİ KAN BAĞIŞI PROJESİ</h1>
+        <p>Bir damla kan, bir can kurtarır. Kan bağışında bulunarak hayat kurtarmaya destek olun.</p>
+        <a href="https://www.kanver.org/" class="cta-button">BAĞIŞ YAPIN</a>
+    </header>
+    <section class="section" id="benefits">
+        <h2 class="section-title">Kan Bağışının Faydaları</h2>
+        <div class="benefits-container">
+            <div class="benefit-card">
+                <div class="card-icon">❤️</div>
+                <h3 class="card-title">Hayat Kurtarın</h3>
+                <p>Bir bağışla üç kişinin hayatını kurtarabilirsiniz. Kan bağışı, ameliyatlarda, kazalarda ve kanser tedavilerinde hayati öneme sahiptir.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="card-icon">🔄</div>
+                <h3 class="card-title">Kan Hücreleri Yenilenir</h3>
+                <p>Kan bağışı vücudunuzdaki kan hücrelerinin yenilenmesini sağlar. Bağış sonrası vücut yeni kan hücreleri üretmeye başlar.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="card-icon">💓</div>
+                <h3 class="card-title">Kalp Sağlığı</h3>
+                <p>Düzenli kan bağışı yapmak kalp krizi riskini azaltır ve kan dolaşımını düzenler.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="card-icon">🩺</div>
+                <h3 class="card-title">Ücretsiz Sağlık Kontrolü</h3>
+                <p>Kan bağışı sırasında tansiyon, nabız, hemoglobin düzeyi gibi temel sağlık kontrolleriniz yapılır.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="card-icon">😊</div>
+                <h3 class="card-title">Psikolojik Fayda</h3>
+                <p>Başka bir insanın hayatını kurtarmanın verdiği mutluluk ve huzur paha biçilemez.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="card-icon">🧬</div>
+                <h3 class="card-title">Kanser Riskini Azaltır</h3>
+                <p>Düzenli kan bağışı yapanlarda bazı kanser türlerinin görülme riskinin azaldığı araştırmalarla kanıtlanmıştır.</p>
+            </div>
+        </div>
+        <div class="image-gallery">
+            <img src="c:\Users\asus\OneDrive\Masaüstü\WhatsApp Görsel 2025-04-17 saat 17.15.40_e965243c.jpg" alt="Kan Bağışı" class="gallery-image">
+            <img src="c:\Users\asus\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\926FFC0CA56636B9E73C565CF994EA5A\WhatsApp Görsel 2025-04-17 saat 17.15.54_2218d52d.jpg" alt="Kan Bağışı" class="gallery-image">
+            <img src="c:\Users\asus\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\8FDD149FCAA7058CACCC9C4AD5B0D89A\WhatsApp Görsel 2025-04-17 saat 17.15.55_175ee80f.jpg" alt="Kan Bağışı" class="gallery-image">
+            <img src="c:\Users\asus\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\B0DD033CBE58AA5EA27747271BFD84E3\WhatsApp Görsel 2025-04-17 saat 17.15.53_2b062118.jpg" alt="Kan Bağışı" class="gallery-image">
+        </div>
+    </section>
+    <section class="section" id="donors">
+        <h2 class="section-title">Kimler Kan Bağışlayabilir?</h2>
+        <div class="donors-container">
+            <div class="donor-card">
+                <div class="card-icon">👨‍⚕️</div>
+                <h3 class="card-title">Yaş ve Kilo</h3>
+                <p>18-65 yaş aralığında ve 50 kg üzerinde olan her sağlıklı birey kan bağışında bulunabilir.</p>
+            </div>
+            <div class="donor-card">
+                <div class="card-icon">🩸</div>
+                <h3 class="card-title">Sağlık Durumu</h3>
+                <p>Kronik bir hastalığı bulunmayan, bulaşıcı hastalık taşımayan ve son 24 saat içinde alkol almamış kişiler bağış yapabilir.</p>
+            </div>
+            <div class="donor-card">
+                <div class="card-icon">⏱️</div>
+                <h3 class="card-title">Bağış Sıklığı</h3>
+                <p>Erkekler her 3 ayda bir, kadınlar ise her 4 ayda bir kan bağışında bulunabilir.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="contact">
+        <h2 class="section-title">Sorularınız İçin</h2>
+        <form class="contact-form" id="contactForm" onsubmit="return validateForm(event)">
+            <div class="form-group">
+                <label for="name">Ad Soyad</label>
+                <input type="text" id="name" class="form-control" placeholder="Adınızı ve soyadınızı giriniz" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" class="form-control" placeholder="Telefon numaranızı giriniz" pattern="[0-9]{10}" title="10 haneli telefon numarası giriniz (ör: 5551234567)" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-posta</label>
+                <input type="email" id="email" class="form-control" placeholder="E-posta adresinizi giriniz" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Konu</label>
+                <select id="category" class="form-control" required>
+                    <option value="" disabled selected>Bir kategori seçiniz</option>
+                    <option value="general">Genel Soru</option>
+                    <option value="donation">Bağış Bilgisi</option>
+                    <option value="volunteer">Gönüllü Olma</option>
+                    <option value="other">Diğer</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Mesajınız</label>
+                <textarea id="message" class="form-control" placeholder="Mesajınızı buraya yazınız" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Gönder</button>
+        </form>
+    </section>
+    <section class="section" id="social">
+        <h2 class="section-title">Bizi Takip Edin</h2>
+        <div class="social-media">
+            <a href="https://www.instagram.com/turkkizilayi/" class="social-icon" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/TurkKizilayi" class="social-icon" target="_blank" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/kizilay" class="social-icon" target="_blank" title="Twitter/X">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/turkish-red-crescent" class="social-icon" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>© 2025 İstinye Üniversitesi Kan Bağışı Projesi. Tüm hakları saklıdır.</p>
+        <p><a href="https://www.kizilay.org.tr" target="_blank">Türk Kızılay</a> ile iş birliği içinde.</p>
+    </footer>
+    <a href="#" class="back-to-top" title="Başa Dön">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- Chatbot HTML -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <h3>Kan Bağışı Asistanı</h3>
+                <i class="fas fa-times chatbot-close"></i>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Sorunuzu yazın..." />
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <div class="chatbot-quick-replies">
+                <button onclick="sendQuickReply('Kimler kan bağışlayabilir?')">Kimler bağış yapabilir?</button>
+                <button onclick="sendQuickReply('Kan bağışı nasıl yapılır?')">Bağış nasıl yapılır?</button>
+                <button onclick="sendQuickReply('Kan bağışının faydaları nelerdir?')">Faydaları neler?</button>
+                <button onclick="sendQuickReply('Bağış noktaları nerede?')">Bağış noktaları</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Form validation
+        function validateForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const category = document.getElementById('category').value;
+            const message = document.getElementById('message').value.trim();
+            if (name.length < 2) {
+                alert('Lütfen geçerli bir ad ve soyad giriniz.');
+                return false;
+            }
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('Lütfen 10 haneli bir telefon numarası giriniz (ör: 5551234567).');
+                return false;
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Lütfen geçerli bir e-posta adresi giriniz.');
+                return false;
+            }
+            if (!category) {
+                alert('Lütfen bir kategori seçiniz.');
+                return false;
+            }
+            if (message.length < 10) {
+                alert('Mesajınız en az 10 karakter olmalıdır.');
+                return false;
+            }
+            alert('Form başarıyla gönderildi!');
+            document.getElementById('contactForm').reset();
+            return true;
+        }
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        // Chatbot functionality
+        const chatbotToggle = document.querySelector('.chatbot-toggle');
+        const chatbotWindow = document.querySelector('.chatbot-window');
+        const chatbotClose = document.querySelector('.chatbot-close');
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.style.display = chatbotWindow.style.display === 'none' ? 'flex' : 'none';
+        });
+        chatbotClose.addEventListener('click', () => {
+            chatbotWindow.style.display = 'none';
+        });
+        // Comprehensive responses object
+        const responses = {
+            // Greetings
+            greeting: {
+                keywords: ['merhaba', 'selam', 'naber', 'iyi günler', 'hello'],
+                response: 'Merhaba! 😊 Kan bağışı hakkında ne öğrenmek istiyorsun? Hızlı yanıt butonlarını kullanabilir ya da sorunu yazabilirsin!'
+            },
+            thanks: {
+                keywords: ['teşekkür', 'sağol', 'teşekkürler', 'thank you'],
+                response: 'Rica ederim! Kan bağışıyla bir hayat kurtarmaya ne dersin? ❤️ <a href="https://www.kanver.org/" target="_blank">Hemen bağış yap!</a>'
+            },
+            goodbye: {
+                keywords: ['güle güle', 'hoşçakal', 'bay bay', 'görüşürüz', 'bye'],
+                response: 'Görüşmek üzere! Kan bağışı yapmayı unutma, bir damla kan bir can kurtarır! ❤️'
+            },
+            // Who can donate
+            whoCanDonate: {
+                keywords: ['kimler bağış yapabilir', 'kan bağışı kimler', 'bağış yapma şartları', 'kan verebilir miyim', 'kimler kan verebilir'],
+                response: '18-65 yaş aralığında, 50 kg üzerinde, kronik hastalığı olmayan, bulaşıcı hastalık taşımayan ve son 24 saat içinde alkol almamış sağlıklı bireyler kan bağışlayabilir. Erkekler her 3 ayda bir, kadınlar her 4 ayda bir bağış yapabilir. Daha fazla bilgi için <a href="https://www.kanver.org/" target="_blank">kanver.org</a> adresini ziyaret edebilirsiniz.'
+            },
+            // How to donate
+            howToDonate: {
+                keywords: ['kan bağışı nasıl yapılır', 'nasıl bağış yaparım', 'bağış süreci', 'kan verme işlemi', 'kan nasıl verilir'],
+                response: 'Türk Kızılay bağış merkezlerine ya da mobil bağış noktalarına kimlik belgenizle giderek bağış yapabilirsiniz. Önce sağlık kontrolünden geçersiniz, ardından işlem yaklaşık 10-15 dakika sürer. Detaylı bilgi için <a href="https://www.kanver.org/" target="_blank">kanver.org</a> adresini ziyaret edin.'
+            },
+            // Benefits of donation
+            benefits: {
+                keywords: ['faydaları neler', 'kan bağışı faydaları', 'neden bağış yapmalıyım', 'kan vermenin yararı', 'kan bağışı ne işe yarar'],
+                response: 'Kan bağışı hayat kurtarır, kan hücrelerini yeniler, kalp sağlığını destekler, ücretsiz sağlık kontrolü sağlar, psikolojik huzur verir ve bazı kanser türlerinin riskini azaltabilir. Bir bağışla üç kişinin hayatını kurtarabilirsiniz!'
+            },
+            // Donation points
+            donationPoints: {
+                keywords: ['bağış noktaları', 'nerede bağış yaparım', 'kan verme yerleri', 'kızılay nerede', 'kan bağışı merkezleri'],
+                response: 'Türk Kızılay’ın bağış noktalarını öğrenmek için <a href="https://www.kanver.org/kanbagisi-noktalari" target="_blank">kanver.org</a> adresini ziyaret edebilir veya en yakın Kızılay şubesine ulaşabilirsiniz.'
+            },
+            // Donation frequency
+            frequency: {
+                keywords: ['ne sıklıkta bağış yapılır', 'kan bağışı sıklığı', 'ne zaman bağış yapabilirim', 'tekrar bağış', 'kan verme aralığı'],
+                response: 'Erkekler her 3 ayda bir, kadınlar ise her 4 ayda bir kan bağışında bulunabilir. Bu aralıklar, vücudunuzun kan üretimini sağlıklı bir şekilde sürdürebilmesi için belirlenmiştir.'
+            },
+            // Health checks
+            healthCheck: {
+                keywords: ['sağlık kontrolü', 'kan bağışı öncesi kontrol', 'ne kontrol edilir', 'test yapılıyor mu', 'sağlık taraması'],
+                response: 'Kan bağışı öncesi tansiyon, nabız, hemoglobin düzeyi gibi temel sağlık kontrolleri yapılır. Ayrıca kanınız bulaşıcı hastalıklar açısından test edilir, böylece hem sizin hem de alıcıların sağlığı korunur.'
+            },
+            // Blood types
+            bloodTypes: {
+                keywords: ['kan grupları', 'hangi kan grubu', 'kan türü önemli mi', 'evrensel kan', 'kan grubu bağışı'],
+                response: 'Her kan grubu bağışı önemlidir! En çok ihtiyaç duyulan kan grupları genellikle 0 Rh+ ve 0 Rh-’dir, çünkü bunlar evrensel alıcı ve verici olarak kullanılır. Ancak tüm kan gruplarına her zaman ihtiyaç vardır. Kendi kan grubunuzu öğrenmek için bağış yapmadan önce test yaptırabilirsiniz.'
+            },
+            // Pain during donation
+            pain: {
+                keywords: ['kan bağışı acıtır mı', 'ağrılı mı', 'kan verirken ağrı', 'iğne acısı', 'bağış ağrısı'],
+                response: 'Kan bağışı genellikle ağrısız bir işlemdir. İğne girişi sırasında hafif bir batma hissi olabilir, ancak bu kısa sürer. Çoğu bağışçı işlem sırasında rahatsızlık hissetmez.'
+            },
+            // Preparation for donation
+            preparation: {
+                keywords: ['bağış öncesi hazırlık', 'kan vermeden önce', 'ne yapmalıyım', 'bağış öncesi öneriler', 'kan bağışı hazırlığı'],
+                response: 'Kan bağışından önce iyi dinlenmiş olmalı, bol su içmeli ve hafif bir yemek yemelisiniz. Son 24 saat içinde alkol almamış olmanız ve sigara içmediyseniz daha iyi olur. Kimlik belgenizi yanınıza almayı unutmayın!'
+            },
+            // After donation
+            afterDonation: {
+                keywords: ['bağış sonrası', 'kan verdikten sonra', 'ne yapmalıyım', 'bağış sonrası öneriler', 'iyileşme süreci'],
+                response: 'Bağış sonrası bol sıvı tüketin, ağır fiziksel aktivitelerden kaçının ve dinlenin. Size verilen atıştırmalıkları yiyerek kan şekerinizi dengeleyin. Herhangi bir baş dönmesi veya halsizlik hissederseniz, hemen bir sağlık görevlisine başvurun.'
+            },
+            // Side effects
+            sideEffects: {
+                keywords: ['yan etkiler', 'kan bağışı riskleri', 'bağış sonrası sorun', 'kan vermenin zararı', 'olumsuz etkiler'],
+                response: 'Kan bağışı genellikle güvenlidir. Nadir durumlarda hafif baş dönmesi, halsizlik veya iğne yerinde morarma görülebilir. Bu etkiler kısa sürede geçer. Ciddi yan etkiler çok nadirdir.'
+            },
+            // Volunteer opportunities
+            volunteer: {
+                keywords: ['gönüllü olmak', 'kızılay gönüllüsü', 'kan bağışı gönüllü', 'nasıl gönüllü olurum', 'gönüllü etkinlik'],
+                response: 'Türk Kızılay’da gönüllü olmak için <a href="https://www.kizilay.org.tr/gonullu-ol" target="_blank">kizilay.org.tr</a> adresinden başvuru yapabilirsiniz. Kan bağışı kampanyalarına destek olabilir, farkındalık etkinliklerinde yer alabilirsiniz!'
+            },
+            // Contact information
+            contact: {
+                keywords: ['iletişim', 'kızılay iletişim', 'soru sormak', 'nasıl ulaşırım', 'kan bağışı bilgi'],
+                response: 'Sorularınız için Türk Kızılay’ın resmi sitesi <a href="https://www.kizilay.org.tr" target="_blank">kizilay.org.tr</a> üzerinden iletişim bilgilerine ulaşabilir veya bizimle web sitemizdeki iletişim formu aracılığıyla iletişime geçebilirsiniz.'
+            },
+            // Donation safety
+            safety: {
+                keywords: ['kan bağışı güvenli mi', 'bağış güvenliği', 'kan verme güvenli mi', 'sağlık riski var mı', 'güvenlik'],
+                response: 'Kan bağışı son derece güvenlidir. Kullanılan tüm malzemeler tek kullanımlıktır ve steril koşullarda işlem yapılır. Sağlık kontrolleri, bağışçı ve alıcı güvenliğini garanti altına alır.'
+            },
+            // Donation duration
+            duration: {
+                keywords: ['bağış ne kadar sürer', 'kan verme süresi', 'işlem süresi', 'kan bağışı kaç dakika', 'süre'],
+                response: 'Kan bağışı işlemi, sağlık kontrolü ve dinlenme süresi dahil yaklaşık 30-45 dakika sürer. Kan alma işlemi ise sadece 10-15 dakika alır.'
+            },
+            // Age and weight restrictions
+            ageWeight: {
+                keywords: ['yaş sınırı', 'kilo sınırı', 'kan bağışı yaşı', 'minimum kilo', 'yaş ve kilo'],
+                response: 'Kan bağışçısı olmak için 18-65 yaş arasında ve en az 50 kg olmalısınız. Bu kriterler, bağışçının sağlığını korumak ve yeterli kan hacmini sağlamak için belirlenmiştir.'
+            },
+            // Medications and donation
+            medications: {
+                keywords: ['ilaç kullanıyorum', 'ilaç ve kan bağışı', 'kan bağışı ilaç', 'ilaçla bağış', 'medikasyon'],
+                response: 'Bazı ilaçlar kan bağışını engelleyebilir. Örneğin, antibiyotik veya kan sulandırıcı ilaçlar kullanıyorsanız bağış yapmadan önce sağlık görevlisine danışmalısınız. Detaylı bilgi için bağış merkezine başvurabilirsiniz.'
+            },
+            // Tattoos and donation
+            tattoos: {
+                keywords: ['dövme ve kan bağışı', 'dövmeli bağış', 'tattoo kan verme', 'dövme sonrası', 'dövme'],
+                response: 'Dövme yaptırdıktan sonra 6 ay boyunca kan bağışı yapamazsınız. Bu süre, enfeksiyon riskini önlemek için gereklidir. 6 ay geçtikten sonra sağlıklıysanız bağış yapabilirsiniz.'
+            },
+            // Pregnancy and donation
+            pregnancy: {
+                keywords: ['hamile kan bağışı', 'gebelik ve bağış', 'hamileyken kan verme', 'doğum sonrası bağış', 'gebelik','hamile'],
+                response: 'Hamile kadınlar kan bağışı yapamaz. Doğum yaptıktan sonra en az 6 ay geçmesi gerekir ve emzirme dönemi tamamlanmalıdır. Sağlık durumunuz uygunsa bu süre sonunda bağış yapabilirsiniz.'
+            }
+        };
+        function sendMessage() {
+            const input = document.getElementById('chatbotInput');
+            let message = input.value.trim();
+            if (!message) return;
+            addMessage(message, 'user');
+            const response = getResponse(message);
+            setTimeout(() => addMessage(response, 'bot'), 500);
+            input.value = '';
+            document.getElementById('chatbotMessages').scrollTop = document.getElementById('chatbotMessages').scrollHeight;
+        }
+        function sendQuickReply(message) {
+            addMessage(message, 'user');
+            const response = getResponse(message);
+            setTimeout(() => addMessage(response, 'bot'), 500);
+            document.getElementById('chatbotMessages').scrollTop = document.getElementById('chatbotMessages').scrollHeight;
+        }
+        function getResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            for (const key in responses) {
+                const responseObj = responses[key];
+                if (responseObj.keywords.some(keyword => lowerMessage.includes(keyword))) {
+                    return responseObj.response;
+                }
+            }
+            return 'Üzgünüm, sorunuzu tam anlayamadım. Kan bağışı ile ilgili başka ne hakkında bilgi almak istiyorsunuz? Hızlı yanıt butonlarını deneyebilirsiniz!';
+        }
+        function addMessage(text, type) {
+            const messages = document.getElementById('chatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chatbot-message', type);
+            messageDiv.innerHTML = text;
+            messages.appendChild(messageDiv);
+            messages.scrollTop = messages.scrollHeight;
+        }
+        // Welcome message
+        setTimeout(() => addMessage('Merhaba! 😊 Kan bağışı hakkında bilgi almak için buradayım. Sorunuz nedir? Hızlı yanıt butonlarını kullanabilirsiniz!', 'bot'), 1000);
+        // Handle Enter key for sending message
+        document.getElementById('chatbotInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
