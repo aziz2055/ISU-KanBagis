@@ -1,6 +1,4 @@
-
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -491,7 +489,7 @@
     </section>
     <section class="section" id="contact">
         <h2 class="section-title">Sorularınız İçin</h2>
-    <center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc2k0SvtbTKWyom21kyPeeoHA7jfubfsmVtQ7sfOyVYEpbzmg/viewform?embedded=true" width="640" height="401" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe></center>
+        <center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc2k0SvtbTKWyom21kyPeeoHA7jfubfsmVtQ7sfOyVYEpbzmg/viewform?embedded=true" width="640" height="401" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe></center>
         <h2 class="section-title">Bizi Takip Edin</h2>
         <div class="social-media">
             <a href="https://www.instagram.com/turkkizilayi/" class="social-icon" target="_blank" title="Instagram">
@@ -503,9 +501,9 @@
             <a href="https://twitter.com/kizilay" class="social-icon" target="_blank" title="Twitter/X">
                 <i class="fab fa-twitter"></i>
             </a>
-           <a href="https://docs.google.com/forms/d/e/1FAIpQLScnAYd4_yURTTJ3GOZv5H0uGVjB9p7q5ErxT9DoQugyQ2ituA/viewform?usp=dialog" class="social-icon" target="_blank" title="Anket">
-    <i class="fas fa-poll"></i>
-</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScnAYd4_yURTTJ3GOZv5H0uGVjB9p7q5ErxT9DoQugyQ2ituA/viewform?usp=dialog" class="social-icon" target="_blank" title="Anket">
+                <i class="fas fa-poll"></i>
+            </a>
         </div>
     </section>
     <footer class="footer">
@@ -539,11 +537,6 @@
         </div>
     </div>
     <script>
-        // Form validation
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScnAYd4_yURTTJ3GOZv5H0uGVjB9p7q5ErxT9DoQugyQ2ituA/viewform?embedded=true" width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-
-     
-        }
         // Back to top button
         const backToTop = document.querySelector('.back-to-top');
         window.addEventListener('scroll', () => {
@@ -553,16 +546,20 @@
                 backToTop.classList.remove('active');
             }
         });
+
         // Chatbot functionality
         const chatbotToggle = document.querySelector('.chatbot-toggle');
         const chatbotWindow = document.querySelector('.chatbot-window');
         const chatbotClose = document.querySelector('.chatbot-close');
+
         chatbotToggle.addEventListener('click', () => {
-            chatbotWindow.style.display = chatbotWindow.style.display === 'none' ? 'flex' : 'none';
+            chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
         });
+
         chatbotClose.addEventListener('click', () => {
             chatbotWindow.style.display = 'none';
         });
+
         // Comprehensive responses object
         const responses = {
             // Greetings
@@ -670,10 +667,11 @@
             },
             // Pregnancy and donation
             pregnancy: {
-                keywords: ['hamile kan bağışı', 'gebelik ve bağış', 'hamileyken kan verme', 'doğum sonrası bağış', 'gebelik','hamile'],
+                keywords: ['hamile kan bağışı', 'gebelik ve bağış', 'hamileyken kan verme', 'doğum sonrası bağış', 'gebelik', 'hamile'],
                 response: 'Hamile kadınlar kan bağışı yapamaz. Doğum yaptıktan sonra en az 6 ay geçmesi gerekir ve emzirme dönemi tamamlanmalıdır. Sağlık durumunuz uygunsa bu süre sonunda bağış yapabilirsiniz.'
             }
         };
+
         function sendMessage() {
             const input = document.getElementById('chatbotInput');
             let message = input.value.trim();
@@ -682,14 +680,16 @@
             const response = getResponse(message);
             setTimeout(() => addMessage(response, 'bot'), 500);
             input.value = '';
-            document.getElementById('chatbotMessages').scrollTop = document.getElementById('chatbotMessages').scrollHeight;
+            scrollMessages();
         }
+
         function sendQuickReply(message) {
             addMessage(message, 'user');
             const response = getResponse(message);
             setTimeout(() => addMessage(response, 'bot'), 500);
-            document.getElementById('chatbotMessages').scrollTop = document.getElementById('chatbotMessages').scrollHeight;
+            scrollMessages();
         }
+
         function getResponse(message) {
             const lowerMessage = message.toLowerCase();
             for (const key in responses) {
@@ -700,16 +700,26 @@
             }
             return 'Üzgünüm, sorunuzu tam anlayamadım. Kan bağışı ile ilgili başka ne hakkında bilgi almak istiyorsunuz? Hızlı yanıt butonlarını deneyebilirsiniz!';
         }
+
         function addMessage(text, type) {
             const messages = document.getElementById('chatbotMessages');
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('chatbot-message', type);
             messageDiv.innerHTML = text;
             messages.appendChild(messageDiv);
+        }
+
+        function scrollMessages() {
+            const messages = document.getElementById('chatbotMessages');
             messages.scrollTop = messages.scrollHeight;
         }
+
         // Welcome message
-        setTimeout(() => addMessage('Merhaba! 😊 Kan bağışı hakkında bilgi almak için buradayım. Sorunuz nedir? Hızlı yanıt butonlarını kullanabilirsiniz!', 'bot'), 1000);
+        setTimeout(() => {
+            addMessage('Merhaba! 😊 Kan bağışı hakkında bilgi almak için buradayım. Sorunuz nedir? Hızlı yanıt butonlarını kullanabilirsiniz!', 'bot');
+            scrollMessages();
+        }, 1000);
+
         // Handle Enter key for sending message
         document.getElementById('chatbotInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
