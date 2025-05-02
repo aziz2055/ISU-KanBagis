@@ -574,38 +574,7 @@
         // Form validation
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScnAYd4_yURTTJ3GOZv5H0uGVjB9p7q5ErxT9DoQugyQ2ituA/viewform?embedded=true" width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
-        function validateForm(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const category = document.getElementById('category').value;
-            const message = document.getElementById('message').value.trim();
-            if (name.length < 2) {
-                alert('Lütfen geçerli bir ad ve soyad giriniz.');
-                return false;
-            }
-            const phoneRegex = /^[0-9]{10}$/;
-            if (!phoneRegex.test(phone)) {
-                alert('Lütfen 10 haneli bir telefon numarası giriniz (ör: 5551234567).');
-                return false;
-            }
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Lütfen geçerli bir e-posta adresi giriniz.');
-                return false;
-            }
-            if (!category) {
-                alert('Lütfen bir kategori seçiniz.');
-                return false;
-            }
-            if (message.length < 10) {
-                alert('Mesajınız en az 10 karakter olmalıdır.');
-                return false;
-            }
-            alert('Form başarıyla gönderildi!');
-            document.getElementById('contactForm').reset();
-            return true;
+     
         }
         // Back to top button
         const backToTop = document.querySelector('.back-to-top');
